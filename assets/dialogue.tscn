@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp8hxnt212nhx"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue.gd" id="1_bs0rn"]
+[ext_resource type="Texture2D" uid="uid://bqfejd8ges116" path="res://assets/art/dialogue_box.png" id="1_xw6m4"]
+[ext_resource type="FontFile" uid="uid://b4hm78hevysml" path="res://assets/fonts/NewHiScore.ttf" id="2_wjyrf"]
+
+[node name="dialogue_player" type="CanvasLayer"]
+script = ExtResource("1_bs0rn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xw6m4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 65.0
+offset_top = 53.0
+offset_right = 1225.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("2_wjyrf")
+theme_override_font_sizes/font_size = 100
+text = "Bonjour je suis "
