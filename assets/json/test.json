@@ -1,6 +1,10 @@
 {
-    "customer": [
-        "test.",
-        "test"
+    "client1": [
+        "good morning sir ! Welcome to our restaurant !",
+        "Oh ! Hi... can I help you ?"
+    ],
+    "client2": [
+        "good morning madam ! Welcome to our restaurant !",
+        "give me something yellow please !"
     ]
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd5s03p1cfwam"
-path="res://.godot/imported/floor tiles.png-ba8fd87cc943d25d5f9ed43b8b31ef48.ctex"
+uid="uid://bgm4rgjy7imxj"
+path="res://.godot/imported/clientJaune-Sheet.png-b98750ee6df6e71e5326472646243fc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/floor tiles.png"
-dest_files=["res://.godot/imported/floor tiles.png-ba8fd87cc943d25d5f9ed43b8b31ef48.ctex"]
+source_file="res://aseprite/sprites_sheets/clientJaune-Sheet.png"
+dest_files=["res://.godot/imported/clientJaune-Sheet.png-b98750ee6df6e71e5326472646243fc1.ctex"]
 
 [params]
 

@@ -5,18 +5,26 @@
 [ext_resource type="FontFile" uid="uid://b4hm78hevysml" path="res://assets/fonts/NewHiScore.ttf" id="2_wjyrf"]
 
 [node name="dialogue_player" type="CanvasLayer"]
+process_mode = 2
 script = ExtResource("1_bs0rn")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Background" type="TextureRect" parent="."]
+z_index = 2
+offset_left = 5.0
+offset_top = 521.0
+offset_right = 1285.0
+offset_bottom = 729.0
 texture = ExtResource("1_xw6m4")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 65.0
-offset_top = 53.0
-offset_right = 1225.0
-offset_bottom = 159.0
+[node name="TextLabel" type="Label" parent="."]
+z_index = 2
+offset_left = 111.0
+offset_top = 559.0
+offset_right = 1139.0
+offset_bottom = 665.0
 theme_override_fonts/font = ExtResource("2_wjyrf")
-theme_override_font_sizes/font_size = 100
-text = "Bonjour je suis "
+theme_override_font_sizes/font_size = 40
+
+[node name="portrait" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(80, 575)

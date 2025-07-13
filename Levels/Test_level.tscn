@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://bv01a43lr4wf6"]
+[gd_scene load_steps=11 format=4 uid="uid://bv01a43lr4wf6"]
 
-[ext_resource type="Texture2D" uid="uid://cja6gnctup546" path="res://assets/art/floor tiles.png" id="1_44yp8"]
-[ext_resource type="PackedScene" uid="uid://cniywqipy5gr" path="res://assets/Characters/Clients.tscn" id="2_fkmbq"]
+[ext_resource type="Texture2D" uid="uid://cd5s03p1cfwam" path="res://assets/art/floor tiles.png" id="1_44yp8"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_gvmx7"]
 [ext_resource type="PackedScene" uid="uid://1pk3bwf6hekc" path="res://assets/Characters/Player.tscn" id="2_nsvb8"]
 [ext_resource type="Texture2D" uid="uid://bgnyhk4lc4pxs" path="res://assets/art/walls.png" id="3_ldinh"]
+[ext_resource type="PackedScene" uid="uid://cp8hxnt212nhx" path="res://assets/dialogue.tscn" id="5_c27av"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_51c0t"]
 texture = ExtResource("1_44yp8")
@@ -30,14 +31,11 @@ terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_q2dvs")
 
 [node name="TestLevel" type="Node2D"]
+script = ExtResource("1_gvmx7")
 
 [node name="Player" parent="." instance=ExtResource("2_nsvb8")]
 z_index = 1
-position = Vector2(616, 155)
-
-[node name="Clients" parent="." instance=ExtResource("2_fkmbq")]
-z_index = 1
-position = Vector2(1108, 187)
+position = Vector2(585, 187)
 
 [node name="tiles" type="Node" parent="."]
 
@@ -52,3 +50,17 @@ tile_set = SubResource("TileSet_uk2p1")
 use_kinematic_bodies = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="tiles"]
+
+[node name="dialogue_player" parent="." instance=ExtResource("5_c27av")]
+scene_text_file = "res://assets/json/test.json"
+
+[node name="TimerClient1" type="Timer" parent="."]
+autostart = true
+
+[node name="TimerClient2" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="TimerClient1" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerClient2" to="." method="_on_timer_client_2_timeout"]
+[connection signal="timeout" from="TimerClient2" to="." method="_on_timer_timeout"]
