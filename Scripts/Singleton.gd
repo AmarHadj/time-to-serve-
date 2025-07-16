@@ -3,10 +3,12 @@ extends Node
 var client_packed = load("res://assets/Characters/Clients.tscn")
 var meal_served = load("res://assets/furnitures/Meal.tscn")
 var need_meal = false
-var has_meal = false
+var waiter_has_meal = false
 var in_dialogue = false
+var client_is_eating = false
 
 signal display_dialog(text_key, portraitTalking)
+
 
 func create_client(positionx, positiony, client_number, dialogue_number):
 	client_packed = preload("res://assets/Characters/Clients.tscn")

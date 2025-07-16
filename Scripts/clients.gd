@@ -3,6 +3,9 @@ extends CharacterBody2D
 var client_number
 var dialogue_number
 var table_assigned = false
+var has_eaten = false
+var finished = false
+var direction
 var object = "client"
 const SPEED = 300.0
 
@@ -11,6 +14,7 @@ var text_key
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: CollisionShape2D = $StaticBody2D/CollisionShape2D
 @onready var talk_zone: CollisionShape2D = $"interactionZone/talk zone"
+@onready var eating_timer: Timer = $EatingTimer
 
 
 func _ready() -> void:
@@ -18,29 +22,43 @@ func _ready() -> void:
 	portrait.texture = load("res://assets/art/characters/portrait/Client"+str(client_number)+"Portrait.png")
 	animated_sprite_2d.play("Idle"+str(client_number))
 	animated_sprite_2d.flip_h = true
+	
+func _process(delta: float) -> void:
+	if Singleton.waiter_has_meal:
+		set_talk_zone(true)
+	else:
+		set_talk_zone(false)
 
 func _physics_process(delta: float) -> void:
 	if table_assigned and global_position.y > 201:
+		direction = -1
+		velocity.y = direction * SPEED
+		animated_sprite_2d.flip_h = true
+		animated_sprite_2d.play("Walk"+str(client_number))
 		hitbox.set_deferred("disabled", true)
-		var direction := -1
-		if direction:
-			velocity.y = direction * SPEED
-		if direction > 0:
-			animated_sprite_2d.flip_h = false
-			
-		elif direction < 0:
-			animated_sprite_2d.flip_h = true
-			
-		if direction == 0 :
+		talk_zone.set_deferred("disabled", true)
+	
+	elif !table_assigned and global_position.y < 492:
+		direction = 1
+		velocity.y = direction * SPEED
+		animated_sprite_2d.flip_h = false
+		animated_sprite_2d.play("HappyWalk"+str(client_number))
+		hitbox.set_deferred("disabled", true)
+		talk_zone.set_deferred("disabled", true)
+		finished = true
+	
+	else:
+		if Singleton.client_is_eating:
+			animated_sprite_2d.play("Eat"+str(client_number))
+		elif table_assigned :
 			animated_sprite_2d.play("Idle"+str(client_number))
-		else:
-			animated_sprite_2d.play("Walk"+str(client_number))
-			talk_zone.set_deferred("disabled", true)
-	else :
+		elif finished:
+			self.queue_free()
+		
 		velocity.y = 0
-		animated_sprite_2d.play("Idle"+str(client_number))
 		hitbox.set_deferred("disabled", false)
 		talk_zone.set_deferred("disabled", false)
+
 	move_and_slide()
 	
 	
@@ -70,3 +88,11 @@ func set_dialogue_number(number):
 	
 func set_talk_zone(boolean):
 	talk_zone.set_deferred("disabled", boolean)
+
+func start_eating_timer():
+	eating_timer.start()
+	
+func _on_eating_timer_timeout() -> void:
+	has_eaten = true
+	table_assigned = false
+	Singleton.client_is_eating = false

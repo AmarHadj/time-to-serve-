@@ -1,23 +1,15 @@
 extends CharacterBody2D
-@onready var button: Sprite2D = $space_bar
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var meal_holding_place: Marker2D = $MealHoldingPlace
 @onready var meal_holding_place_2: Marker2D = $MealHoldingPlace2
 
 const SPEED = 300.0
-var has_touched_client = false
 var is_serving = false
 var serving_animation_str = ""
 var meal_to_serve
 
 
-func _process(delta: float) -> void:
-	if has_touched_client and !Singleton.need_meal and !Singleton.in_dialogue:
-		button.visible = true
-	else :
-		button.visible = false
-		
-		
 func _physics_process(delta: float) -> void:
 
 	var directionX := Input.get_axis("ui_left", "ui_right")
@@ -50,21 +42,23 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func set_meal_to_serve(meal):
-	meal_to_serve = meal
-	serving_animation_str = "WithMeal"
-	is_serving = true
-	
-	
-func _on_interaction_zone_area_entered(area: Area2D) -> void:
-	has_touched_client = true
-	
-func _on_interaction_zone_area_exited(area: Area2D) -> void:
-	has_touched_client = false
+	if !is_serving:
+		meal_to_serve = meal
+		serving_animation_str = "WithMeal"
+		is_serving = true
+	else:
+		meal_to_serve = meal
+		serving_animation_str = ""
+		is_serving = false
 	
 func verify_meal_animation():
 	if animated_sprite_2d.flip_h and is_serving:
 		meal_to_serve.global_position = meal_holding_place_2.global_position
 	elif !animated_sprite_2d.flip_h and is_serving:
 		meal_to_serve.global_position = meal_holding_place.global_position
+		
 func put_meal_on_table(table):
+		Singleton.waiter_has_meal = false
+		Singleton.client_is_eating = true
 		table.put_meal_on_table(meal_to_serve)
+		set_meal_to_serve(null)

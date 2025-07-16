@@ -38,7 +38,7 @@ script = ExtResource("1_gvmx7")
 
 [node name="Player" parent="." instance=ExtResource("2_nsvb8")]
 z_index = 1
-position = Vector2(1141, 307)
+position = Vector2(766, 287)
 
 [node name="Chef" parent="." instance=ExtResource("3_ni7sj")]
 position = Vector2(-78, 306)
