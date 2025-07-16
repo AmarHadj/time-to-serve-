@@ -1,9 +1,28 @@
 {
-    "client1": [
+    "tableClient1":[
         "good morning sir ! Welcome to our restaurant !",
-        "Oh ! Hi... can I help you ?"
+        "Oh ! Hi... can I help you ?",
+        "Hum... Actually I was about to ask you if you wanted a table",
+        "oh yeah sure, I'll take one table !"
     ],
-    "client2": [
+    "Client1":[
+        "so are you ready to order ?",
+        "well... how do you do that ?",
+        "you don't know how to order a meal?",
+        "oh yes a meal, of course I know haha...",
+        "...Are you sure ?",
+        "Okay I admit, it's my first time in a restaurant ever. I have no idea of what I am doing",
+        "Ooooh, I understand. If that can reasure you it's my first day as a waiter !",
+        "What a relief then ! So, what should I do now ?",
+        "here, this the menu on your table, you can choose whatever meal you want to eat !",
+        "So I can just choose anything ?!",
+        "Of course !",
+        "Wow ! Restaurants are really great ! Why I've waited so long before going into one ?",
+        "They sure are ! So, what will it be on your plate today sir ?",
+        "I'll take some lasagna !",
+        "Great choice ! I'll be back soon"
+    ],
+    "Client2": [
         "good morning madam ! Welcome to our restaurant !",
         "give me something yellow please !"
     ]

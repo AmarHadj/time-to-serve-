@@ -18,12 +18,15 @@ texture = ExtResource("1_xw6m4")
 
 [node name="TextLabel" type="Label" parent="."]
 z_index = 2
-offset_left = 111.0
+offset_left = 108.0
 offset_top = 559.0
-offset_right = 1139.0
-offset_bottom = 665.0
+offset_right = 1217.0
+offset_bottom = 689.0
 theme_override_fonts/font = ExtResource("2_wjyrf")
 theme_override_font_sizes/font_size = 40
+autowrap_mode = 2
+text_overrun_behavior = 2
+max_lines_visible = 2
 
 [node name="portrait" type="Sprite2D" parent="."]
 z_index = 2

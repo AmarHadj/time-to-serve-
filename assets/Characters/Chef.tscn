@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1o8bil4kvckv"]
+
+[ext_resource type="Texture2D" uid="uid://drewyf4dal7fr" path="res://assets/art/characters/characters/chef-Sheet.png" id="1_wutee"]
+[ext_resource type="Texture2D" uid="uid://cp8x317l7xuq3" path="res://assets/art/characters/portrait/ChefPortraitWithWig.png" id="2_8g0s1"]
+[ext_resource type="Texture2D" uid="uid://cpfjmwalb4i71" path="res://assets/art/characters/characters/wig.png" id="3_843kd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm3wt"]
+radius = 19.5
+height = 79.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiuoe"]
+atlas = ExtResource("1_wutee")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufuvw"]
+atlas = ExtResource("1_wutee")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxdm7"]
+atlas = ExtResource("1_wutee")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe4nr"]
+atlas = ExtResource("1_wutee")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsky6"]
+atlas = ExtResource("1_wutee")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whm6p"]
+atlas = ExtResource("1_wutee")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2e4r"]
+atlas = ExtResource("1_wutee")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6tr5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiuoe")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufuvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxdm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe4nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsky6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whm6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2e4r")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm4dn"]
+size = Vector2(109, 108)
+
+[node name="Chef" type="CharacterBody2D"]
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-3, 4)
+shape = SubResource("CapsuleShape2D_fm3wt")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p6tr5")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="interactionZone" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="talk zone" type="CollisionShape2D" parent="interactionZone"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_hm4dn")
+
+[node name="portrait" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_8g0s1")
+
+[node name="wig" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+texture = ExtResource("3_843kd")

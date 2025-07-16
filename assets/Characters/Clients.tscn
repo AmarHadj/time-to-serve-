@@ -1,10 +1,21 @@
-[gd_scene load_steps=23 format=3 uid="uid://cniywqipy5gr"]
+[gd_scene load_steps=25 format=3 uid="uid://cniywqipy5gr"]
 
 [ext_resource type="Script" path="res://Scripts/clients.gd" id="1_1nybl"]
 [ext_resource type="Texture2D" uid="uid://llibofiwc1hx" path="res://assets/art/characters/characters/tutorialClient.png" id="2_t2c48"]
 [ext_resource type="Texture2D" uid="uid://biok1gkik7gw6" path="res://assets/art/characters/characters/tutorialClient-Sheet.png" id="3_705wr"]
 [ext_resource type="Texture2D" uid="uid://deheilkuwm7av" path="res://assets/art/characters/characters/clientJaune-Sheet.png" id="3_swxtd"]
 [ext_resource type="Texture2D" uid="uid://kma1tf1imrlc" path="res://assets/art/characters/portrait/Client1Portrait.png" id="4_v54fs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1037o"]
+friction = 0.0
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imyom"]
+size = Vector2(81, 85)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_27er0"]
+radius = 19.5
+height = 79.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l002v"]
 atlas = ExtResource("2_t2c48")
@@ -127,33 +138,36 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqopt"]
-size = Vector2(93, 93)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0m3"]
 size = Vector2(109, 108)
 
 [node name="Clients" type="CharacterBody2D"]
 script = ExtResource("1_1nybl")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_1037o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(1.5, 4.5)
+shape = SubResource("RectangleShape2D_imyom")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-3, 4)
+shape = SubResource("CapsuleShape2D_27er0")
+disabled = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6oybg")
-animation = &"Idle1"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_oqopt")
+animation = &"Idle2"
 
 [node name="interactionZone" type="Area2D" parent="."]
-collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interactionZone"]
+[node name="talk zone" type="CollisionShape2D" parent="interactionZone"]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_qb0m3")
 
 [node name="portrait" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("4_v54fs")
-
-[connection signal="area_entered" from="interactionZone" to="." method="_on_interaction_zone_area_entered"]
-[connection signal="area_exited" from="interactionZone" to="." method="_on_interaction_zone_area_exited"]

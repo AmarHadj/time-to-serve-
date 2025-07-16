@@ -12,8 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	Singleton.create_client(1114, 543, 0, 0, 0, 1)
+	Singleton.create_client(1132, 492, 1, 15)
 
 
-func _on_timer_client_2_timeout() -> void:
-	Singleton.create_client(1114, 200, 0, 0, 0, 2)
+#func _on_timer_client_2_timeout() -> void:
+	#Singleton.create_client(1114, 200, 0, 0, 0, 2)

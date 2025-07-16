@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcllb7k4c5nu3"]
+
+[ext_resource type="Texture2D" uid="uid://cbndt0hau0obd" path="res://icon.svg" id="1_5vno8"]
+[ext_resource type="Script" path="res://Scripts/table.gd" id="1_cvwts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebgm1"]
+size = Vector2(70, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p67f7"]
+size = Vector2(83, 87)
+
+[node name="Table" type="Node2D"]
+script = ExtResource("1_cvwts")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.539063, 0.550781)
+texture = ExtResource("1_5vno8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ebgm1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_p67f7")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(11, 0)

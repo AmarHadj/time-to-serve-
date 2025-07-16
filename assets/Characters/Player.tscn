@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://1pk3bwf6hekc"]
+[gd_scene load_steps=23 format=3 uid="uid://1pk3bwf6hekc"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_tfvhl"]
 [ext_resource type="Script" path="res://Scripts/interaction_zone.gd" id="3_fvvea"]
@@ -9,6 +9,10 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_kj1cn"]
 atlas = ExtResource("3_prlws")
 region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j76r"]
+atlas = ExtResource("3_prlws")
+region = Rect2(1664, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjkv3"]
 atlas = ExtResource("3_prlws")
@@ -34,6 +38,30 @@ region = Rect2(640, 0, 128, 128)
 atlas = ExtResource("3_prlws")
 region = Rect2(768, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n4b3"]
+atlas = ExtResource("3_prlws")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcpu6"]
+atlas = ExtResource("3_prlws")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvev0"]
+atlas = ExtResource("3_prlws")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it2oa"]
+atlas = ExtResource("3_prlws")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dkqf"]
+atlas = ExtResource("3_prlws")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk1y8"]
+atlas = ExtResource("3_prlws")
+region = Rect2(1536, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_27e5q"]
 animations = [{
 "frames": [{
@@ -43,6 +71,14 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j76r")
+}],
+"loop": true,
+"name": &"IdleWithMeal",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -66,10 +102,34 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n4b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcpu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvev0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it2oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dkqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk1y8")
+}],
+"loop": true,
+"name": &"WalkWithMeal",
+"speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a5v0"]
-size = Vector2(92, 94)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6lw7"]
+radius = 31.0
+height = 74.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffhf8"]
 size = Vector2(193.5, 180.5)
@@ -79,15 +139,15 @@ script = ExtResource("1_tfvhl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_27e5q")
-animation = &"Idle"
+animation = &"IdleWithMeal"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7a5v0")
+position = Vector2(-3, 4)
+shape = SubResource("CapsuleShape2D_c6lw7")
 
 [node name="interactionZone" type="Area2D" parent="."]
 process_mode = 3
-collision_mask = 2
 script = ExtResource("3_fvvea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactionZone"]
@@ -102,6 +162,12 @@ texture = ExtResource("3_j4o0l")
 [node name="portrait" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("5_bis12")
+
+[node name="MealHoldingPlace" type="Marker2D" parent="."]
+position = Vector2(-34, -18)
+
+[node name="MealHoldingPlace2" type="Marker2D" parent="."]
+position = Vector2(34, -18)
 
 [connection signal="area_entered" from="interactionZone" to="." method="_on_interaction_zone_area_entered"]
 [connection signal="area_entered" from="interactionZone" to="interactionZone" method="_on_area_entered"]
