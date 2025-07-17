@@ -23,10 +23,10 @@ func _ready() -> void:
 	animated_sprite_2d.flip_h = true
 	
 func _process(delta: float) -> void:
-	if Singleton.waiter_has_meal:
-		set_talk_zone(true)
+	if Singleton.waiter_has_meal || Singleton.client_is_eating || Singleton.activate_meal_drop:
+		disable_talk_zone(true)
 	else:
-		set_talk_zone(false)
+		disable_talk_zone(false)
 
 func _physics_process(delta: float) -> void:
 	if table_assigned and global_position.y > 201:
@@ -85,7 +85,7 @@ func set_table_assigned(boolean):
 func set_dialogue_number(number):
 	dialogue_number = number
 	
-func set_talk_zone(boolean):
+func disable_talk_zone(boolean):
 	talk_zone.set_deferred("disabled", boolean)
 
 func start_eating_timer():

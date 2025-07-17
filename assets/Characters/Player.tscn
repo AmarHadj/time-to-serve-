@@ -135,6 +135,7 @@ height = 74.0
 size = Vector2(193.5, 180.5)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_tfvhl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -151,6 +152,7 @@ process_mode = 3
 script = ExtResource("3_fvvea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactionZone"]
+physics_interpolation_mode = 2
 shape = SubResource("RectangleShape2D_ffhf8")
 
 [node name="space_bar" type="Sprite2D" parent="."]

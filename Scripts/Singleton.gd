@@ -2,11 +2,12 @@ extends Node
 
 var client_packed = load("res://assets/Characters/Clients.tscn")
 var meal_served = load("res://assets/furnitures/Meal.tscn")
-var need_meal = false
+var activate_meal_drop = false
 var waiter_has_meal = false
 var in_dialogue = false
 var client_is_eating = false
 var client_is_finished = false
+var client_need_table = true
 
 signal display_dialog(text_key, portraitTalking)
 

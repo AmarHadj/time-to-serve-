@@ -8,13 +8,14 @@ var has_meal_on = false
 
 func _process(delta: float) -> void:
 	if Singleton.waiter_has_meal:
-		set_zone(false)
-	else:
-		set_zone(true)
-	if has_meal_on:
+		deactivate_zone(false)
+	elif Singleton.client_is_finished || Singleton.client_need_table || Singleton.client_is_eating:
+		deactivate_zone(true)
+		
+	if meal_on_table and has_meal_on:
 		meal_on_table.global_position = marker.global_position
 
-func set_zone(boolean):
+func deactivate_zone(boolean):
 	collision_shape_2d.set_deferred("disabled", boolean)
 	
 func put_meal_on_table(meal):

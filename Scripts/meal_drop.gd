@@ -8,16 +8,14 @@ var meal_number
 @export var drop_place: Marker2D
 
 func _process(delta: float) -> void:
-	if Singleton.need_meal:
-		activate_area()
+	if Singleton.activate_meal_drop:
+		deactivate_area(false)
 	else:
-		deactivate_area()
+		deactivate_area(true)
 
-func deactivate_area():
-	interaction_area.set_deferred("disabled", true)
+func deactivate_area(boolean):
+	interaction_area.set_deferred("disabled", boolean)
 	
-func activate_area():
-	interaction_area.set_deferred("disabled", false)
 	
 func get_object_name():
 	return object

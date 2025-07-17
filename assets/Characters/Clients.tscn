@@ -271,12 +271,15 @@ animations = [{
 size = Vector2(109, 108)
 
 [node name="Clients" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_1nybl")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_1037o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+physics_interpolation_mode = 2
 z_index = 1
 position = Vector2(1.5, 4.5)
 shape = SubResource("RectangleShape2D_imyom")

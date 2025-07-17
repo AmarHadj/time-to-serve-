@@ -69,3 +69,10 @@ func put_meal_on_table(table):
 		table_served = table
 		table_served.put_meal_on_table(meal_to_serve)
 		set_meal_to_serve(null)
+		
+func let_go_of_meal():
+	table_served.set_has_meal_on(false)
+	table_served = null
+	meal_to_serve.queue_free()
+	set_meal_to_serve(null)
+	
