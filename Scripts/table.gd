@@ -19,7 +19,9 @@ func set_zone(boolean):
 	
 func put_meal_on_table(meal):
 	meal_on_table = meal
-	has_meal_on = true
 
 func get_object_name():
 	return object
+	
+func set_has_meal_on(boolean):
+	has_meal_on = boolean

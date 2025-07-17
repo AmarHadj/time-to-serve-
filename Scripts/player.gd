@@ -8,6 +8,7 @@ const SPEED = 300.0
 var is_serving = false
 var serving_animation_str = ""
 var meal_to_serve
+var table_served
 
 
 func _physics_process(delta: float) -> void:
@@ -46,19 +47,25 @@ func set_meal_to_serve(meal):
 		meal_to_serve = meal
 		serving_animation_str = "WithMeal"
 		is_serving = true
+		if table_served:
+			table_served.set_has_meal_on(false)
 	else:
 		meal_to_serve = meal
 		serving_animation_str = ""
 		is_serving = false
+		if table_served:
+			table_served.set_has_meal_on(true)
 	
 func verify_meal_animation():
-	if animated_sprite_2d.flip_h and is_serving:
-		meal_to_serve.global_position = meal_holding_place_2.global_position
-	elif !animated_sprite_2d.flip_h and is_serving:
-		meal_to_serve.global_position = meal_holding_place.global_position
+	if meal_to_serve:
+		if animated_sprite_2d.flip_h and is_serving:
+			meal_to_serve.global_position = meal_holding_place_2.global_position
+		elif !animated_sprite_2d.flip_h and is_serving:
+			meal_to_serve.global_position = meal_holding_place.global_position
 		
 func put_meal_on_table(table):
 		Singleton.waiter_has_meal = false
 		Singleton.client_is_eating = true
-		table.put_meal_on_table(meal_to_serve)
+		table_served = table
+		table_served.put_meal_on_table(meal_to_serve)
 		set_meal_to_serve(null)

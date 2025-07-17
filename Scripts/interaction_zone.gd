@@ -21,7 +21,6 @@ func _input(event):
 	if object_touched and event.is_action_pressed("ui_accept"):
 		if object_touched.get_object_name() == "client" and !Singleton.need_meal:
 			if discussion_progress != object_touched.get_dialogue_number() + 1:
-				Singleton.in_dialogue = true
 				if client_need_table:
 					Strtable = "table"
 				else:
@@ -33,7 +32,6 @@ func _input(event):
 				discussion_progress += 1
 				#the client moves to his table
 				if discussion_progress == 5 and client_need_table:
-					Singleton.in_dialogue = false
 					client_need_table = false
 					object_touched.set_table_assigned(true)
 					discussion_progress = 0
@@ -42,12 +40,19 @@ func _input(event):
 					client_number = object_touched.get_client_number()
 					client_served = object_touched
 					Singleton.need_meal = true
+					
 		if object_touched.get_object_name() == "meal_drop" and Singleton.need_meal:
 			object_touched.prepare_meal(client_number)
 			Singleton.need_meal = false
 		if object_touched.get_object_name() == "meal":
-			self.get_parent().set_meal_to_serve(object_touched)
-			Singleton.waiter_has_meal = true
-		if object_touched.get_object_name() == "table" and Singleton.waiter_has_meal:
+			
+			if Singleton.client_is_finished and client_number == 1:
+				Singleton.emit_signal("display_dialog", Strtable + "finishedClient1", portrait)
+			
+			if !Singleton.in_dialogue:
+				self.get_parent().set_meal_to_serve(object_touched)
+				Singleton.waiter_has_meal = true
+
+		if object_touched.get_object_name() == "table" and Singleton.waiter_has_meal and !Singleton.client_is_finished:
 			self.get_parent().put_meal_on_table(object_touched)
 			client_served.start_eating_timer()

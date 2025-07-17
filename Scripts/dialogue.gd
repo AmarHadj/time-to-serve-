@@ -25,6 +25,7 @@ func load_scene_text():
 
 func show_text():
 	text_label.text = selected_text.pop_front()
+	Singleton.in_dialogue = true
 
 func next_line():
 	if selected_text.size() > 0:
@@ -38,6 +39,7 @@ func finish():
 	portrait.texture = null
 	in_progress = false
 	get_tree().paused = false
+	Singleton.in_dialogue = false
 	
 func on_display_dialog(text_key, portraitTalking):
 	if in_progress:

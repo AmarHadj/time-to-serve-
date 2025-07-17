@@ -6,6 +6,7 @@ var need_meal = false
 var waiter_has_meal = false
 var in_dialogue = false
 var client_is_eating = false
+var client_is_finished = false
 
 signal display_dialog(text_key, portraitTalking)
 

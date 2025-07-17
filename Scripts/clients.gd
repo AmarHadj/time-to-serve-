@@ -4,7 +4,6 @@ var client_number
 var dialogue_number
 var table_assigned = false
 var has_eaten = false
-var finished = false
 var direction
 var object = "client"
 const SPEED = 300.0
@@ -45,14 +44,14 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("HappyWalk"+str(client_number))
 		hitbox.set_deferred("disabled", true)
 		talk_zone.set_deferred("disabled", true)
-		finished = true
+		Singleton.client_is_finished = true
 	
 	else:
 		if Singleton.client_is_eating:
 			animated_sprite_2d.play("Eat"+str(client_number))
 		elif table_assigned :
 			animated_sprite_2d.play("Idle"+str(client_number))
-		elif finished:
+		elif Singleton.client_is_finished:
 			self.queue_free()
 		
 		velocity.y = 0
