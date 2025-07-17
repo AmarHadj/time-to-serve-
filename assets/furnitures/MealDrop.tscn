@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qq0o7gdppe4x"]
+[gd_scene load_steps=7 format=3 uid="uid://qq0o7gdppe4x"]
 
 [ext_resource type="Script" path="res://Scripts/meal_drop.gd" id="1_6f0ro"]
 [ext_resource type="Texture2D" uid="uid://cbndt0hau0obd" path="res://icon.svg" id="2_qf0h2"]
+[ext_resource type="Texture2D" uid="uid://cp8x317l7xuq3" path="res://assets/art/characters/portrait/ChefPortraitWithWig.png" id="3_efk1n"]
+[ext_resource type="Texture2D" uid="uid://cgcy6ivh4mcho" path="res://assets/art/characters/portrait/chef portrait.png" id="4_7u2wf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faqn8"]
 size = Vector2(70, 73)
@@ -33,7 +35,15 @@ scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_lx1s4")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 6.0
 one_shot = true
+
+[node name="portrait_with_wig" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_efk1n")
+
+[node name="portrait_without_wig" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_7u2wf")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

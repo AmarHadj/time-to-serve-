@@ -21,6 +21,10 @@ func _ready() -> void:
 	portrait.texture = load("res://assets/art/characters/portrait/Client"+str(client_number)+"Portrait.png")
 	animated_sprite_2d.play("Idle"+str(client_number))
 	animated_sprite_2d.flip_h = true
+	if client_number == 1:
+		dialogue_number = 5
+	if client_number == 2:
+		dialogue_number = 5
 	
 func _process(delta: float) -> void:
 	if Singleton.waiter_has_meal || Singleton.client_is_eating || Singleton.activate_meal_drop:
@@ -52,6 +56,8 @@ func _physics_process(delta: float) -> void:
 		elif table_assigned :
 			animated_sprite_2d.play("Idle"+str(client_number))
 		elif Singleton.client_is_finished:
+			Singleton.client_is_eating = false
+			Singleton.client_need_table = true
 			self.queue_free()
 		
 		velocity.y = 0

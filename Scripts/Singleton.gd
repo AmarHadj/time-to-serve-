@@ -8,16 +8,18 @@ var in_dialogue = false
 var client_is_eating = false
 var client_is_finished = false
 var client_need_table = true
+var time_to_cook = false
+var time_for_next_client = true
+var wig_remove = false
 
 signal display_dialog(text_key, portraitTalking)
 
 
-func create_client(positionx, positiony, client_number, dialogue_number):
+func create_client(positionx, positiony, client_number):
 	client_packed = preload("res://assets/Characters/Clients.tscn")
 	var client = client_packed.instantiate()
 	client.global_position.x = positionx
 	client.global_position.y = positiony
-	client.set_dialogue_number(dialogue_number)
 	client.set_client_number(client_number)
 	client.z_index = 2
 	call_deferred("add_child", client)
