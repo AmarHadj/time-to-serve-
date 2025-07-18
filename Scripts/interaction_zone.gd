@@ -56,6 +56,7 @@ func _input(event):
 				discussion_progress_chef += 1
 				if !Singleton.in_dialogue and client_number == 3:
 					Singleton.tv_time = true
+					Singleton.activate_meal_drop = false
 				
 			if !Singleton.waiter_has_meal and !Singleton.in_dialogue and client_number != 3:
 				object_touched.prepare_meal(client_number)

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var meal_holding_place: Marker2D = $MealHoldingPlace
 @onready var meal_holding_place_2: Marker2D = $MealHoldingPlace2
 
-const SPEED = 300.0
+const SPEED = 700.0 # put at 300 for final result
 var is_serving = false
 var serving_animation_str = ""
 var meal_to_serve
