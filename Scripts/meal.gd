@@ -19,9 +19,10 @@ func _process(delta: float) -> void:
 		deactivate_area(true)
 
 	if is_tv and Singleton.tv_time:
-		deactivate_area(false)
-	elif Singleton.waiter_has_meal:
-		deactivate_area(true)
+		if !Singleton.waiter_has_meal:
+			deactivate_area(false)
+		elif Singleton.tv_time:
+			deactivate_area(true)
 
 func deactivate_area(boolean):
 	interaction_area.set_deferred("disabled", boolean)
