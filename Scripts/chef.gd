@@ -10,19 +10,15 @@ var direction
 
 func _physics_process(delta: float) -> void:
 
-	if Singleton.time_to_cook and global_position.x > -92:
-		direction = -1
-		velocity.x = direction * SPEED
-		animated_sprite_2d.flip_h = true
-		wig.flip_h = true
-		animated_sprite_2d.play("Walk")
+	if Singleton.tv_time:
+		move(-1, true)
+		
+	elif Singleton.time_to_cook and global_position.x > -92:
+		move(-1, true)
 	
-	elif !Singleton.time_to_cook and global_position.x < 132:
-		direction = 1
-		velocity.x = direction * SPEED
-		animated_sprite_2d.flip_h = false
-		wig.flip_h = false
-		animated_sprite_2d.play("Walk")
+	elif !Singleton.time_to_cook and global_position.x < 132 and !Singleton.tv_time:
+		move(1, false)
+		
 	else:
 		if Singleton.wig_remove:
 			wig.texture = null
@@ -33,3 +29,9 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
+	
+func move(direction, flip):
+		velocity.x = direction * SPEED
+		animated_sprite_2d.flip_h = flip
+		wig.flip_h = flip
+		animated_sprite_2d.play("Walk")

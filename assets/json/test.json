@@ -46,5 +46,29 @@
         "test1",
         "test2"
 
+    ],
+
+    "tableClient3": [
+        "good morning Sir ! Welcome to our restaurant !",
+        "Good morning ! What a great restaurant you have here !",
+        "Thank you ! DO you want a table ?",
+        "Sure !"
+    ],
+    "Client3":[
+        "test 1",
+        "test 2",
+        "test 3",
+        "test 4",
+        "test 5"
+    ],
+    "ChefCook3":[
+        "Hi, i'll take a tv this time",
+        "yeah no pr- Wait !? Have you heard that ?",
+        "Sounds like it comes from the kitchen ! What's going on ?",
+        "I don't know but I need to make sure everything is okay !",
+        "but what about the order ?",
+        "I am sure you can figure out something ! I really have to go now !"
+
     ]
+
 }

@@ -25,6 +25,8 @@ func _ready() -> void:
 		dialogue_number = 5
 	if client_number == 2:
 		dialogue_number = 5
+	if client_number == 3:
+		dialogue_number = 5
 	
 func _process(delta: float) -> void:
 	if Singleton.waiter_has_meal || Singleton.client_is_eating || Singleton.activate_meal_drop:

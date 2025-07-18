@@ -54,8 +54,10 @@ func _input(event):
 				elif discussion_progress_chef % 2 == 1:
 					Singleton.emit_signal("display_dialog", "ChefCook"+str(client_number), chef_portrait)
 				discussion_progress_chef += 1
+				if !Singleton.in_dialogue and client_number == 3:
+					Singleton.tv_time = true
 				
-			if !Singleton.waiter_has_meal and !Singleton.in_dialogue:
+			if !Singleton.waiter_has_meal and !Singleton.in_dialogue and client_number != 3:
 				object_touched.prepare_meal(client_number)
 				Singleton.activate_meal_drop = false
 			

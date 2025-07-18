@@ -11,6 +11,7 @@ var client_need_table = true
 var time_to_cook = false
 var time_for_next_client = true
 var wig_remove = false
+var tv_time = false
 
 signal display_dialog(text_key, portraitTalking)
 
