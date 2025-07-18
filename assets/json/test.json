@@ -1,4 +1,11 @@
 {
+    "BossStart":[
+        "test 1",
+        "test 2",
+        "test 3",
+        "test 4",
+        "test 5"
+    ],
     "tableClient1":[
         "good morning sir ! Welcome to our restaurant !",
         "Oh ! Hi... can I help you ?",
@@ -69,6 +76,20 @@
         "but what about the order ?",
         "I am sure you can figure out something ! I really have to go now !"
 
+    ],
+    "FinChef":[
+        "test 1",
+        "test 2",
+        "test 3",
+        "test 4",
+        "test 5"
+    ],
+    "BossFin":[
+        "test fin 1",
+        "test 2",
+        "test 3",
+        "test 4",
+        "test 5"
     ]
 
 }

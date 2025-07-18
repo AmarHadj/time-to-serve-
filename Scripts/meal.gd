@@ -19,9 +19,9 @@ func _process(delta: float) -> void:
 		deactivate_area(true)
 
 	if is_tv and Singleton.tv_time:
-		if !Singleton.waiter_has_meal:
+		if !Singleton.waiter_has_meal and !Singleton.client_is_eating:
 			deactivate_area(false)
-		elif Singleton.tv_time:
+		else :
 			deactivate_area(true)
 
 func deactivate_area(boolean):

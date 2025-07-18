@@ -10,16 +10,21 @@ var direction
 
 func _physics_process(delta: float) -> void:
 
-	if Singleton.tv_time:
+	if Singleton.tv_time and global_position.x > -92:
 		move(-1, true)
 		
-	elif Singleton.time_to_cook and global_position.x > -92:
+	elif Singleton.time_to_cook and global_position.x > -92 and !Singleton.tv_time:
 		move(-1, true)
 	
 	elif !Singleton.time_to_cook and global_position.x < 132 and !Singleton.tv_time:
 		move(1, false)
 		
 	else:
+		if global_position.x < 0:
+			Singleton.chef_is_here = false
+		elif global_position.x > 0:
+			Singleton.chef_is_here = true
+			
 		if Singleton.wig_remove:
 			wig.texture = null
 			

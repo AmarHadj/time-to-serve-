@@ -1,6 +1,7 @@
 extends Node
 
 var client_packed = load("res://assets/Characters/Clients.tscn")
+var boss_packed = load("res://assets/Characters/Boss.tscn")
 var meal_served = load("res://assets/furnitures/Meal.tscn")
 var activate_meal_drop = false
 var waiter_has_meal = false
@@ -12,6 +13,9 @@ var time_to_cook = false
 var time_for_next_client = true
 var wig_remove = false
 var tv_time = false
+var game_end = false
+var game_start = false
+var chef_is_here = false
 
 signal display_dialog(text_key, portraitTalking)
 
@@ -32,4 +36,13 @@ func create_meal(drop_place, meal_number):
 	meal.z_index = 2
 	meal.set_meal(meal_number)
 	call_deferred("add_child", meal)
+
+func create_boss(positionx, positiony):
+	boss_packed = preload("res://assets/Characters/Boss.tscn")
+	var boss = boss_packed.instantiate()
+	boss.global_position.x = positionx
+	boss.global_position.y = positiony
+	boss.set_object_name("Boss2")
+	boss.z_index = 2
+	call_deferred("add_child", boss)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bv01a43lr4wf6"]
+[gd_scene load_steps=16 format=4 uid="uid://bv01a43lr4wf6"]
 
 [ext_resource type="Texture2D" uid="uid://cd5s03p1cfwam" path="res://assets/art/floor tiles.png" id="1_44yp8"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_gvmx7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cp8hxnt212nhx" path="res://assets/dialogue.tscn" id="5_c27av"]
 [ext_resource type="PackedScene" uid="uid://qq0o7gdppe4x" path="res://assets/furnitures/MealDrop.tscn" id="8_d3w7u"]
 [ext_resource type="PackedScene" uid="uid://crtfriv8iqw3s" path="res://assets/furnitures/Meal.tscn" id="9_8t3ya"]
+[ext_resource type="PackedScene" uid="uid://cvk84paoj05av" path="res://assets/Characters/Boss.tscn" id="10_rrwrw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_51c0t"]
 texture = ExtResource("1_44yp8")
@@ -39,12 +40,15 @@ script = ExtResource("1_gvmx7")
 
 [node name="Meal3" parent="." instance=ExtResource("9_8t3ya")]
 z_index = 2
-position = Vector2(442, 110)
+position = Vector2(498, 144)
 is_tv = true
+
+[node name="Boss" parent="." instance=ExtResource("10_rrwrw")]
+position = Vector2(1132, 201)
 
 [node name="Player" parent="." instance=ExtResource("2_nsvb8")]
 z_index = 1
-position = Vector2(766, 287)
+position = Vector2(741, 431)
 
 [node name="Chef" parent="." instance=ExtResource("3_ni7sj")]
 position = Vector2(132, 309)
@@ -54,11 +58,14 @@ scene_text_file = "res://assets/json/test.json"
 
 [node name="TimerClient1" type="Timer" parent="."]
 one_shot = true
-autostart = true
+
+[node name="TimerBoss" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [node name="Table" parent="." instance=ExtResource("4_weihc")]
 z_index = 1
-position = Vector2(1050, 204)
+position = Vector2(1050, 207)
 
 [node name="tiles" type="Node" parent="."]
 
@@ -86,3 +93,4 @@ drop_place = NodePath("../Meal_drop")
 position = Vector2(212, 375)
 
 [connection signal="timeout" from="TimerClient1" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerBoss" to="." method="_on_timer_boss_timeout"]
