@@ -35,8 +35,8 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func move(direction, flip):
-		velocity.x = direction * SPEED
+func move(direction_choosed, flip):
+		velocity.x = direction_choosed * SPEED
 		animated_sprite_2d.flip_h = flip
 		wig.flip_h = flip
 		animated_sprite_2d.play("Walk")

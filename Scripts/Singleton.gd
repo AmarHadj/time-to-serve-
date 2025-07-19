@@ -1,8 +1,11 @@
 extends Node
 
+
+
 var client_packed = load("res://assets/Characters/Clients.tscn")
 var boss_packed = load("res://assets/Characters/Boss.tscn")
 var meal_served = load("res://assets/furnitures/Meal.tscn")
+
 var activate_meal_drop = false
 var waiter_has_meal = false
 var in_dialogue = false
@@ -16,6 +19,7 @@ var tv_time = false
 var game_end = false
 var game_start = false
 var chef_is_here = false
+var is_end = false
 
 signal display_dialog(text_key, portraitTalking)
 

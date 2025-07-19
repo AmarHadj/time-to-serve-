@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var portrait: Sprite2D = $"../portrait"
 @onready var meal_holding_place: Marker2D = $"../MealHoldingPlace"
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var object_touched = null
 var meal_served
@@ -40,7 +41,9 @@ func _input(event):
 			elif discussion_progress_boss % 2 == 1:
 				Singleton.emit_signal("display_dialog", object_touched.get_text_key()+"Fin", object_touched.get_portrait())
 			discussion_progress_boss += 1
-			
+			if !Singleton.in_dialogue:
+				Singleton.is_end = true 
+				collision_shape_2d.set_deferred("disabled", true)
 			
 		elif object_touched.get_object_name() == "client" and !Singleton.activate_meal_drop:
 			print("client touche")
