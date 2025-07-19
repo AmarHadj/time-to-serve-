@@ -25,7 +25,7 @@ func _process(_delta) -> void:
 	
 
 func _on_timer_timeout() -> void:
-	Singleton.create_client(1132, 492, client_number)
+	Singleton.create_client(1218, 492, client_number)
 
 func _on_timer_boss_timeout() -> void:
-	Singleton.create_boss(1132, 492)
+	Singleton.create_boss(1218, 492)

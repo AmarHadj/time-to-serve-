@@ -8,7 +8,7 @@ var direction
 @onready var wig: Sprite2D = $wig
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	if Singleton.tv_time and global_position.x > -92:
 		move(-1, true)

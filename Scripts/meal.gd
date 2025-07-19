@@ -5,7 +5,7 @@ var object = "meal"
 @export var is_tv: bool
 var meal_number
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Singleton.client_is_finished:
 		if !is_tv:
 			self.play("FinishedMeal")

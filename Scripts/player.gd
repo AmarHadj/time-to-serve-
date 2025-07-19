@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var meal_holding_place: Marker2D = $MealHoldingPlace
 @onready var meal_holding_place_2: Marker2D = $MealHoldingPlace2
+@onready var collision_shape_2d: CollisionShape2D = $interactionZone/CollisionShape2D
 
 const SPEED = 700.0 # put at 300 for final result
 var is_serving = false
@@ -11,7 +12,7 @@ var meal_to_serve
 var table_served
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	var directionX := Input.get_axis("ui_left", "ui_right")
 	if directionX:

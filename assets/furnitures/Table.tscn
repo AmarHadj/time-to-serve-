@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcllb7k4c5nu3"]
+[gd_scene load_steps=6 format=3 uid="uid://bcllb7k4c5nu3"]
 
-[ext_resource type="Texture2D" uid="uid://cbndt0hau0obd" path="res://icon.svg" id="1_5vno8"]
 [ext_resource type="Script" path="res://Scripts/table.gd" id="1_cvwts"]
+[ext_resource type="Texture2D" uid="uid://yk2s716xbt2y" path="res://assets/art/furnitures/tables.png" id="2_pe0hu"]
+[ext_resource type="Texture2D" uid="uid://p5ivgnptj3ej" path="res://assets/art/furnitures/yellow_table.png" id="3_qeuvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebgm1"]
-size = Vector2(70, 73)
+size = Vector2(88, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p67f7"]
 size = Vector2(83, 87)
@@ -12,16 +13,18 @@ size = Vector2(83, 87)
 [node name="Table" type="Node2D"]
 script = ExtResource("1_cvwts")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4.76837e-07)
-scale = Vector2(0.539063, 0.550781)
-texture = ExtResource("1_5vno8")
+[node name="Orange" type="Sprite2D" parent="."]
+texture = ExtResource("2_pe0hu")
+
+[node name="Yellow" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_qeuvp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -0.5)
+position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_ebgm1")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -31,4 +34,4 @@ position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_p67f7")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(11, 0)
+position = Vector2(11, -10)

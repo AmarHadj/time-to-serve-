@@ -1,36 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://qq0o7gdppe4x"]
+[gd_scene load_steps=8 format=3 uid="uid://qq0o7gdppe4x"]
 
 [ext_resource type="Script" path="res://Scripts/meal_drop.gd" id="1_6f0ro"]
-[ext_resource type="Texture2D" uid="uid://cbndt0hau0obd" path="res://icon.svg" id="2_qf0h2"]
+[ext_resource type="Texture2D" uid="uid://b2ufr6kw2ygxe" path="res://assets/art/furnitures/Meal_drop.png" id="2_8apn4"]
 [ext_resource type="Texture2D" uid="uid://cp8x317l7xuq3" path="res://assets/art/characters/portrait/ChefPortraitWithWig.png" id="3_efk1n"]
 [ext_resource type="Texture2D" uid="uid://cgcy6ivh4mcho" path="res://assets/art/characters/portrait/chef portrait.png" id="4_7u2wf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faqn8"]
-size = Vector2(70, 73)
+size = Vector2(192.611, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2x17"]
+size = Vector2(63, 383)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx1s4"]
-size = Vector2(106.818, 72.4074)
+size = Vector2(26, 288)
 
 [node name="MealDrop" type="Node2D"]
-scale = Vector2(0.440001, 5.4)
 script = ExtResource("1_6f0ro")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4.76837e-07)
-scale = Vector2(0.539063, 0.550781)
-texture = ExtResource("2_qf0h2")
+[node name="MealDrop" type="Sprite2D" parent="."]
+position = Vector2(-80, 19)
+texture = ExtResource("2_8apn4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -0.5)
+position = Vector2(-112.306, 161.5)
 shape = SubResource("RectangleShape2D_faqn8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(15.5, 19.5)
+shape = SubResource("RectangleShape2D_h2x17")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(39.7727, -0.462964)
+position = Vector2(46, -29)
 scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_lx1s4")
 

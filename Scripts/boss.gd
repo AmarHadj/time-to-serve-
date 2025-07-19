@@ -14,7 +14,7 @@ func _ready() -> void:
 	text_key = "Boss"
 	animated_sprite_2d.play("Idle")
 	animated_sprite_2d.flip_h = true
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if Singleton.game_start and global_position.y < 492:
 		direction = 1

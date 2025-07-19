@@ -28,13 +28,13 @@ func _ready() -> void:
 	if client_number == 3:
 		dialogue_number = 5
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Singleton.waiter_has_meal || Singleton.client_is_eating || Singleton.activate_meal_drop:
 		disable_talk_zone(true)
 	else:
 		disable_talk_zone(false)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if table_assigned and global_position.y > 201:
 		direction = -1
 		velocity.y = direction * SPEED

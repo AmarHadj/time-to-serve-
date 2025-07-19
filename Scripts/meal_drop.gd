@@ -8,7 +8,7 @@ var meal_number
 @onready var portrait: Sprite2D = $portrait_with_wig
 @export var drop_place: Marker2D
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Singleton.activate_meal_drop:
 		deactivate_area(false)
 	else:
