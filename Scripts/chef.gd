@@ -6,8 +6,13 @@ var direction
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wig: Sprite2D = $wig
+@onready var exclamation_mark: Sprite2D = $Exclamation_mark
 
-
+func _process(delta: float) -> void:
+	if Singleton.activate_meal_drop and Singleton.chef_is_here:
+		exclamation_mark.visible = true
+	else:
+		exclamation_mark.visible = false
 func _physics_process(_delta: float) -> void:
 
 	if Singleton.tv_time and global_position.x > -92:

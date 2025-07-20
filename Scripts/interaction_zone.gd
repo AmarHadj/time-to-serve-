@@ -65,6 +65,7 @@ func _input(event):
 				if discussion_progress_client > object_touched.get_dialogue_number():
 					client_number = object_touched.get_client_number()
 					client_served = object_touched
+					client_served.set_is_waiting(true)
 					Singleton.activate_meal_drop = true
 					
 		elif object_touched.get_object_name() == "meal_drop" and Singleton.activate_meal_drop:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1o8bil4kvckv"]
+[gd_scene load_steps=15 format=3 uid="uid://d1o8bil4kvckv"]
 
 [ext_resource type="Texture2D" uid="uid://drewyf4dal7fr" path="res://assets/art/characters/characters/chef-Sheet.png" id="1_wutee"]
 [ext_resource type="Script" path="res://Scripts/chef.gd" id="1_xleo0"]
 [ext_resource type="Texture2D" uid="uid://cp8x317l7xuq3" path="res://assets/art/characters/portrait/ChefPortraitWithWig.png" id="2_8g0s1"]
 [ext_resource type="Texture2D" uid="uid://cpfjmwalb4i71" path="res://assets/art/characters/characters/wig.png" id="3_843kd"]
+[ext_resource type="Texture2D" uid="uid://cgqr7ixg0nr2p" path="res://assets/art/Other/exclamation mark.png" id="5_dyyd1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm3wt"]
 radius = 19.5
@@ -92,3 +93,9 @@ texture = ExtResource("2_8g0s1")
 [node name="wig" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
 texture = ExtResource("3_843kd")
+
+[node name="Exclamation_mark" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(-1, -58)
+texture = ExtResource("5_dyyd1")

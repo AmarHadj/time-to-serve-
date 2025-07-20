@@ -6,6 +6,7 @@ var table_assigned = false
 var has_eaten = false
 var direction
 var object = "client"
+var is_waiting
 const SPEED = 300.0
 
 var text_key
@@ -15,6 +16,7 @@ var text_key
 @onready var talk_zone: CollisionShape2D = $"interactionZone/talk zone"
 @onready var eating_timer: Timer = $EatingTimer
 @onready var coin_sound: AudioStreamPlayer2D = $Coin_sound
+@onready var exclamation_mark: Sprite2D = $Exclamation_mark
 
 
 func _ready() -> void:
@@ -30,7 +32,7 @@ func _ready() -> void:
 		dialogue_number = 5
 	
 func _process(_delta: float) -> void:
-	if Singleton.waiter_has_meal || Singleton.client_is_eating || Singleton.activate_meal_drop:
+	if Singleton.waiter_has_meal || Singleton.client_is_eating || Singleton.activate_meal_drop || Singleton.tv_time:
 		disable_talk_zone(true)
 	else:
 		disable_talk_zone(false)
@@ -43,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 		animated_sprite_2d.play("Walk"+str(client_number))
 		hitbox.set_deferred("disabled", true)
 		talk_zone.set_deferred("disabled", true)
+		exclamation_mark.visible = false
 	
 	elif !table_assigned and global_position.y < 492:
 		direction = 1
@@ -52,13 +55,16 @@ func _physics_process(_delta: float) -> void:
 		hitbox.set_deferred("disabled", true)
 		talk_zone.set_deferred("disabled", true)
 		Singleton.client_is_finished = true
+
 	
 	else:
 		if Singleton.client_is_eating:
 			animated_sprite_2d.play("Eat"+str(client_number))
 		elif table_assigned :
 			animated_sprite_2d.play("Idle"+str(client_number))
+
 		elif Singleton.client_is_finished:
+
 			Singleton.client_is_eating = false
 			Singleton.client_need_table = true
 			self.queue_free()
@@ -66,6 +72,10 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = 0
 		hitbox.set_deferred("disabled", false)
 		talk_zone.set_deferred("disabled", false)
+		if velocity.y == 0 and !is_waiting:
+			exclamation_mark.visible = true
+		else:
+			exclamation_mark.visible = false
 
 	move_and_slide()
 	
@@ -106,3 +116,9 @@ func _on_eating_timer_timeout() -> void:
 	Singleton.client_is_eating = false
 	if client_number != 1:
 		coin_sound.play()
+		
+func get_is_waiting():
+	return is_waiting
+	
+func set_is_waiting(boolean):
+	is_waiting = boolean

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cniywqipy5gr"]
+[gd_scene load_steps=86 format=3 uid="uid://cniywqipy5gr"]
 
 [ext_resource type="Script" path="res://Scripts/clients.gd" id="1_1nybl"]
 [ext_resource type="Texture2D" uid="uid://llibofiwc1hx" path="res://assets/art/characters/characters/tutorialClient.png" id="2_t2c48"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://efcguug13hnx" path="res://assets/art/characters/characters/tvClient-Sheet.png" id="4_o0eqv"]
 [ext_resource type="Texture2D" uid="uid://kma1tf1imrlc" path="res://assets/art/characters/portrait/Client1Portrait.png" id="4_v54fs"]
 [ext_resource type="AudioStream" uid="uid://dgneg7v35rpyw" path="res://assets/sound/sound effect/coin-3.wav" id="7_l7qvg"]
+[ext_resource type="Texture2D" uid="uid://cgqr7ixg0nr2p" path="res://assets/art/Other/exclamation mark.png" id="8_ae3ow"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1037o"]
 friction = 0.0
@@ -629,5 +630,11 @@ one_shot = true
 
 [node name="Coin_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_l7qvg")
+
+[node name="Exclamation_mark" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(-1, -58)
+texture = ExtResource("8_ae3ow")
 
 [connection signal="timeout" from="EatingTimer" to="." method="_on_eating_timer_timeout"]

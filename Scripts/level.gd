@@ -5,7 +5,7 @@ extends Node2D
 @onready var Music: AudioStreamPlayer2D = $Music
 @onready var Bell: AudioStreamPlayer2D = $Bell
 
-var client_number = 2
+var client_number = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
