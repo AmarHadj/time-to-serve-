@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgkgbc5b03rxs"
+path="res://.godot/imported/plate-put-down-88789.mp3-a58cf65a1fafb160d9ec603b6c8ac51a.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/sound effect/plate-put-down-88789.mp3"
+dest_files=["res://.godot/imported/plate-put-down-88789.mp3-a58cf65a1fafb160d9ec603b6c8ac51a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

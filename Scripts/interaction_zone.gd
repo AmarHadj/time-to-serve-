@@ -1,7 +1,6 @@
 extends Area2D
 
 @onready var portrait: Sprite2D = $"../portrait"
-@onready var meal_holding_place: Marker2D = $"../MealHoldingPlace"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var object_touched = null
@@ -82,6 +81,7 @@ func _input(event):
 				if !Singleton.in_dialogue and client_number == 3:
 					Singleton.tv_time = true
 					Singleton.activate_meal_drop = false
+					
 			elif Singleton.game_end and Singleton.chef_is_here:
 				chef_portrait = meal_drop.get_portrait()
 				if discussion_progress_chef % 2 == 0: 
@@ -128,6 +128,8 @@ func _input(event):
 				self.get_parent().set_meal_to_serve(object_touched)
 				Singleton.waiter_has_meal = true
 				Singleton.activate_meal_drop = true
+				if client_number != 1:
+					object_touched.set_money(false)
 
 				
 			elif !Singleton.in_dialogue:

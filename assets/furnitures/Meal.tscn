@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://crtfriv8iqw3s"]
+[gd_scene load_steps=14 format=3 uid="uid://crtfriv8iqw3s"]
 
 [ext_resource type="Script" path="res://Scripts/meal.gd" id="1_a5afs"]
 [ext_resource type="Texture2D" uid="uid://c7o184nmx28ek" path="res://assets/art/Meals/finishedPlate.png" id="1_g3ibt"]
 [ext_resource type="Texture2D" uid="uid://cxr24sbcu56g3" path="res://assets/art/Meals/Lasagna.png" id="2_erl25"]
 [ext_resource type="Texture2D" uid="uid://b4n151aqehsyt" path="res://assets/art/Meals/Meal2.png" id="3_i3k7x"]
 [ext_resource type="Texture2D" uid="uid://q6mgpaviqhdc" path="res://assets/art/Meals/Meal3.png" id="4_fm6uk"]
+[ext_resource type="Texture2D" uid="uid://cnn5gm2rmjk57" path="res://assets/art/furnitures/Money.png" id="6_kn1jg"]
+[ext_resource type="AudioStream" uid="uid://dgkgbc5b03rxs" path="res://assets/sound/sound effect/plate-put-down-88789.mp3" id="7_86twg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1imb2"]
 atlas = ExtResource("1_g3ibt")
@@ -66,9 +68,18 @@ sprite_frames = SubResource("SpriteFrames_ofiyh")
 animation = &"Meal3"
 script = ExtResource("1_a5afs")
 
+[node name="Money" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 22)
+texture = ExtResource("6_kn1jg")
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 6)
 shape = SubResource("RectangleShape2D_n4ur3")
 disabled = true
+
+[node name="PlateSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_86twg")
+volume_db = 1.0

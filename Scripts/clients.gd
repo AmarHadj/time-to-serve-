@@ -14,6 +14,7 @@ var text_key
 @onready var hitbox: CollisionShape2D = $StaticBody2D/CollisionShape2D
 @onready var talk_zone: CollisionShape2D = $"interactionZone/talk zone"
 @onready var eating_timer: Timer = $EatingTimer
+@onready var coin_sound: AudioStreamPlayer2D = $Coin_sound
 
 
 func _ready() -> void:
@@ -103,3 +104,5 @@ func _on_eating_timer_timeout() -> void:
 	has_eaten = true
 	table_assigned = false
 	Singleton.client_is_eating = false
+	if client_number != 1:
+		coin_sound.play()

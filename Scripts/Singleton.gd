@@ -30,7 +30,7 @@ func create_client(positionx, positiony, client_number):
 	client.global_position.x = positionx
 	client.global_position.y = positiony
 	client.set_client_number(client_number)
-	client.z_index = 2
+	client.z_index = 0
 	call_deferred("add_child", client)
 	
 func create_meal(drop_place, meal_number):

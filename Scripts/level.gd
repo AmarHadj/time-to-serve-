@@ -2,13 +2,14 @@ extends Node2D
 @onready var timer_client_1: Timer = $TimerClient1
 @onready var timer_boss: Timer = $TimerBoss
 @onready var end: Sprite2D = $End
+@onready var Music: AudioStreamPlayer2D = $Music
+@onready var Bell: AudioStreamPlayer2D = $Bell
 
-var client_number = 0
+var client_number = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	Bell.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
@@ -25,7 +26,12 @@ func _process(_delta) -> void:
 	
 
 func _on_timer_timeout() -> void:
-	Singleton.create_client(1218, 492, client_number)
+	Singleton.create_client(1190, 492, client_number)
+	Bell.play()
 
 func _on_timer_boss_timeout() -> void:
-	Singleton.create_boss(1218, 492)
+	Singleton.create_boss(1190, 492)
+	Bell.play()
+
+func _on_audio_stream_player_2d_finished() -> void:
+	Music.play()

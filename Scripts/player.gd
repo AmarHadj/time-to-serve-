@@ -65,11 +65,12 @@ func verify_meal_animation():
 			meal_to_serve.global_position = meal_holding_place.global_position
 		
 func put_meal_on_table(table):
-		Singleton.waiter_has_meal = false
-		Singleton.client_is_eating = true
-		table_served = table
-		table_served.put_meal_on_table(meal_to_serve)
-		set_meal_to_serve(null)
+	meal_to_serve.play_plate_sound()
+	Singleton.waiter_has_meal = false
+	Singleton.client_is_eating = true
+	table_served = table
+	table_served.put_meal_on_table(meal_to_serve)
+	set_meal_to_serve(null)
 		
 func let_go_of_meal():
 	table_served.set_has_meal_on(false)

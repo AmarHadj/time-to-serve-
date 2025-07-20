@@ -127,7 +127,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0alc"]
-size = Vector2(46, 31)
+size = Vector2(36, 27.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffhf8"]
 size = Vector2(311, 117)
@@ -142,9 +142,10 @@ script = ExtResource("1_tfvhl")
 sprite_frames = SubResource("SpriteFrames_27e5q")
 animation = &"IdleWithMeal"
 autoplay = "Idle"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 25)
+position = Vector2(2, 26.75)
 shape = SubResource("RectangleShape2D_o0alc")
 
 [node name="interactionZone" type="Area2D" parent="."]

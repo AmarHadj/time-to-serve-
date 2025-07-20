@@ -27,9 +27,6 @@ func _process(_delta: float) -> void:
 		deactivate_zone(true)
 		
 	
-
-
-
 func deactivate_zone(boolean):
 	collision_shape_2d.set_deferred("disabled", boolean)
 	

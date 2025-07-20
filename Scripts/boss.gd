@@ -9,6 +9,7 @@ var direction
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var portrait: Sprite2D = $portrait
 @onready var hit_box: CollisionShape2D = $StaticBody2D/CollisionShape2D
+@onready var exclamation_mark: Sprite2D = $Exclamation_mark
 
 func _ready() -> void:
 	text_key = "Boss"
@@ -17,6 +18,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	
 	if Singleton.game_start and global_position.y < 492:
+		exclamation_mark.visible = false
 		direction = 1
 		velocity.y = direction * SPEED
 		animated_sprite_2d.flip_h = false
@@ -24,6 +26,8 @@ func _physics_process(_delta: float) -> void:
 		hit_box.set_deferred("disabled", true)
 	elif global_position.y > 492:
 		self.queue_free()
+	if Singleton.is_end:
+		exclamation_mark.visible = false
 		
 	move_and_slide()
 

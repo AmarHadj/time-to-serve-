@@ -1,5 +1,8 @@
 extends Control
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,3 +16,7 @@ func _process(delta: float) -> void:
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://Levels/Test_level.tscn")
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	audio_stream_player_2d.play()
